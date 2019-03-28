@@ -7,9 +7,6 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="css/normalize.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-
   <script>
 	function allowDrop(ev) {
   		ev.preventDefault();
@@ -18,41 +15,10 @@
   		ev.dataTransfer.setData("text", ev.target.id);
 	}
 	function drop(ev) {
-		if getElementById("div").is(':empty'){
-			ev.preventDefault();
-  			var data = ev.dataTransfer.getData("text");
-  			ev.target.appendChild(document.getElementById(data));
-		}
+		ev.preventDefault();
+  		var data = ev.dataTransfer.getData("text");
+  		ev.target.appendChild(document.getElementById(data));
 	}
-
-	var stop = true;
-    $(".draggable").on("drag", function (e) {
-
-        stop = true;
-
-        if (e.originalEvent.clientY < 150) {
-            stop = false;
-            scroll(-1)
-        }
-
-        if (e.originalEvent.clientY > ($(window).height() - 150)) {
-            stop = false;
-            scroll(1)
-        }
-
-    });
-
-    $(".draggable").on("dragend", function (e) {
-         stop = true;
-    });
-
-    var scroll = function (step) {
-        var scrollY = $(window).scrollTop();
-        $(window).scrollTop(scrollY + step);
-        if (!stop) {
-            setTimeout(function () { scroll(step) }, 20);
-        }
-    }
 </script>
 <style type="text/css">
   	th {
@@ -186,6 +152,5 @@
 	</table>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="js/script.js"></script>
 </body>
 </html>
