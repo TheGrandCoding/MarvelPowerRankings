@@ -11,21 +11,21 @@
   <link href="css/style.css" rel="stylesheet">
 
   <script>
-function allowDrop(ev) {
-  	ev.preventDefault();
-}
-function drag(ev) {
-  	ev.dataTransfer.setData("text", ev.target.id);
-}
-function drop(ev) {
-	if getElementById("div").is(':empty'){
-		ev.preventDefault();
-  		var data = ev.dataTransfer.getData("text");
-  		ev.target.appendChild(document.getElementById(data));
+	function allowDrop(ev) {
+  		ev.preventDefault();
 	}
-}
+	function drag(ev) {
+  		ev.dataTransfer.setData("text", ev.target.id);
+	}
+	function drop(ev) {
+		if getElementById("div").is(':empty'){
+			ev.preventDefault();
+  			var data = ev.dataTransfer.getData("text");
+  			ev.target.appendChild(document.getElementById(data));
+		}
+	}
 
-var stop = true;
+	var stop = true;
     $(".draggable").on("drag", function (e) {
 
         stop = true;
@@ -53,14 +53,6 @@ var stop = true;
             setTimeout(function () { scroll(step) }, 20);
         }
     }
-
-function swapImages(){
-	var image1 = document.getElementsByTagName('Iron1')
-	var image2 = document.getElementsByTagName('Hulk1')
-	var src = image1.src;
-	image1.src = image2.src;
-	image2.src = src;
-}
 </script>
 <style type="text/css">
   	th {
