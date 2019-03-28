@@ -24,10 +24,41 @@ function drop(ev) {
   var data = ev.dataTransfer.getData("text");
   ev.target.appendChild(document.getElementById(data));
 }
+var stop = true;
+    $(".draggable").on("drag", function (e) {
+
+        stop = true;
+
+        if (e.originalEvent.clientY < 150) {
+            stop = false;
+            scroll(-1)
+        }
+
+        if (e.originalEvent.clientY > ($(window).height() - 150)) {
+            stop = false;
+            scroll(1)
+        }
+
+    });
+
+    $(".draggable").on("dragend", function (e) {
+         stop = true;
+    });
+
+    var scroll = function (step) {
+        var scrollY = $(window).scrollTop();
+        $(window).scrollTop(scrollY + step);
+        if (!stop) {
+            setTimeout(function () { scroll(step) }, 20);
+        }
+    }
 </script>
 <style type="text/css">
   th {
     text-align: left;
+  }
+  td {
+  	text-align: right;
   }
   #div {
   width:100px;
@@ -39,98 +70,116 @@ function drop(ev) {
 </head>
 
 <body>
-
   <h1>Marvel Cinematic Universe Power Rankings</h1>
-
-  <table style="width:50%">
-    <caption><h2 style="font-size:150%">Rankings</h2></caption>
+  <table>
     <tr>
-      <th><p>Movies</p></th>
-      <th><p>Number</p></th>
+      <th style="width:10%"><p>Movies</p></th>
+      <th style="width:10%"></th>
       <th><p>Sorted</p></th>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Iron1" draggable="true" ondragstart="drag(event)" src="https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_.jpg" alt="Iron Man 1" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">1</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Hulk1" draggable="true" ondragstart="drag(event)" src="https://fanart.tv/fanart/movies/1724/movieposter/the-incredible-hulk-54ec19edd0a3b.jpg" alt="The Incredible Hulk" style="width:100px;height:200px;"></div></td>
+      <td ><p style="font-size:300%;font-family:verdana">2</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Iron2" draggable="true" ondragstart="drag(event)" src="https://images-na.ssl-images-amazon.com/images/I/81sC6pkIARL._SY445_.jpg" alt="Iron Man 2" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">3</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Thor1" draggable="true" ondragstart="drag(event)" src="https://i.pinimg.com/736x/d0/52/2c/d0522c1964062aa4917eee4ca523a859.jpg?b=t" alt="Thor" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">4</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Cap1" draggable="true" ondragstart="drag(event)" src="https://i.pinimg.com/originals/46/68/d1/4668d1373b01f81a11b0c021571ad38a.jpg" alt="Captain America: The First Avenger" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">5</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Avg1" draggable="true" ondragstart="drag(event)" src="https://images-na.ssl-images-amazon.com/images/I/51k1da28EmL.jpg" alt="The Avengers" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">6</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Iron3" draggable="true" ondragstart="drag(event)" src="https://images-na.ssl-images-amazon.com/images/I/71aYephNm9L._SY606_.jpg" alt="Iron Man 3" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">7</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Thor2" draggable="true" ondragstart="drag(event)" src="https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/f/fc/Thor-_The_Dark_World_poster.jpg/revision/latest?cb=20131115001851" alt="Thor: The Dark World" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">8</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Cap2" draggable="true" ondragstart="drag(event)" src="https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/c/c0/Captain_America_The_Winter_Soldier_main_poster.jpg/revision/latest?cb=20160617182910" alt="Captain America: The Winter Soldier" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">9</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Gua1" draggable="true" ondragstart="drag(event)" src="https://vignette.wikia.nocookie.net/marvelmovies/images/f/f8/GuardiansoftheGalaxyTheatricalPoster.jpg/revision/latest?cb=20160615013903" alt="Guardians of The Galaxy" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">10</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Avg2" draggable="true" ondragstart="drag(event)" src="https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/c/c7/Avengers_Age_Of_Ultron-poster1.jpg/revision/latest?cb=20150224202250" alt="Avengers: Age of Ultron" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">11</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Ant1" draggable="true" ondragstart="drag(event)" src="https://upload.wikimedia.org/wikipedia/en/7/75/Ant-Man_poster.jpg" alt="Ant-Man" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">12</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Cap3" draggable="true" ondragstart="drag(event)" src="https://upload.wikimedia.org/wikipedia/en/5/53/Captain_America_Civil_War_poster.jpg" alt="Captain America: Civil War" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">13</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Doc1" draggable="true" ondragstart="drag(event)" src="https://www.movieposter.com/posters/archive/main/246/MPW-123240" alt="Doctor Strange" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">14</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Gua2" draggable="true" ondragstart="drag(event)" src="https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/5/5c/GOTG2_Payoff_1_Sheet_Online_lg.jpg/revision/latest?cb=20170301052206" alt="Guardians of The Galaxy Vol. 2" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">15</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Spi1" draggable="true" ondragstart="drag(event)" src="https://upload.wikimedia.org/wikipedia/en/f/f9/Spider-Man_Homecoming_poster.jpg" alt="Spider-Man: Homecoming" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">16</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Thor3" draggable="true" ondragstart="drag(event)" src="https://upload.wikimedia.org/wikipedia/en/7/7d/Thor_Ragnarok_poster.jpg" alt="Thor: Ragnarok" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">17</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Pan1" draggable="true" ondragstart="drag(event)" src="https://images-na.ssl-images-amazon.com/images/I/61apTYdaRXL.jpg" alt="Black Panther" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">18</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Avg3" draggable="true" ondragstart="drag(event)" src="https://images-na.ssl-images-amazon.com/images/I/A1t8xCe9jwL._SY679_.jpg" alt="Avenger Infinity War" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">19</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="Ant2" draggable="true" ondragstart="drag(event)" src="https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/0/0d/Ant-Man_and_the_Wasp_Complete_Poster.jpg/revision/latest?cb=20180430193615" alt="Ant-Man And The Wasp" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">20</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
     <tr>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="CapM1" draggable="true" ondragstart="drag(event)" src="https://m.media-amazon.com/images/M/MV5BMTE0YWFmOTMtYTU2ZS00ZTIxLWE3OTEtYTNiYzBkZjViZThiXkEyXkFqcGdeQXVyODMzMzQ4OTI@._V1_.jpg" alt="Captain Marvel" style="width:100px;height:200px;"></div></td>
+      <td><p style="font-size:300%;font-family:verdana">21</p></td>
       <td><div id="div" style="background-color:grey" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
     </tr>
   </table>
